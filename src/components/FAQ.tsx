@@ -1,60 +1,79 @@
 "use client";
-
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus } from 'lucide-react';
 
 const faqs = [
-    { question: "How long does a typical project take?", answer: "Timeline varies depending on complexity, but most brand projects take 4-6 weeks." },
-    { question: "Do you offer ongoing support?", answer: "Yes, we offer retainer packages for continuous optimization and content creation." },
-    { question: "What is your pricing model?", answer: "We value transparency. Our pricing is project-based or monthly retainer, tailored to your needs." },
-    { question: "Can you handle international clients?", answer: "Absolutely. We work with brands globally and are accustomed to remote collaboration." }
+    {
+        id: "01",
+        q: "Placeholder Question Goes Here?",
+        a: "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Is Simply Dummy Text."
+    },
+    { id: "02", q: "Placeholder Question Goes Here?", a: "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry." },
+    { id: "03", q: "Placeholder Question Goes Here?", a: "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry." },
+    { id: "04", q: "Placeholder Question Goes Here?", a: "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry." },
+    { id: "05", q: "Placeholder Question Goes Here?", a: "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry." },
 ];
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-    const toggleFAQ = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index);
-    };
+    const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="py-24 px-[5%] bg-gray-50 text-black" id="faq">
-            <div className="max-w-[800px] mx-auto">
-                <motion.h2
-                    className="font-outfit text-4xl md:text-5xl text-primary mb-12 uppercase text-left leading-tight"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    Frequently<br />Asked<br />Questions
-                </motion.h2>
+        <section className="py-24 px-[5%] bg-white relative overflow-hidden">
 
-                <div className="w-full">
+            {/* 1. The Middle Blurred Ball */}
+            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px] pointer-events-none z-0" />
+
+            <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 relative z-10">
+
+                {/* Left Side: Header */}
+                <div className="flex flex-col justify-center">
+                    <h2 className="font-outfit text-5xl md:text-7xl font-black text-primary leading-[0.9] uppercase tracking-tighter mb-8">
+                        FREQUENTLY<br />ASKED<br />
+                        <span className="italic font-light">QUESTIONS</span>
+                    </h2>
+                    <p className="text-gray-400 text-sm md:text-base max-w-sm leading-relaxed">
+                        Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Is.
+                    </p>
+                </div>
+
+                {/* Right Side: Accordion Cards */}
+                <div className="flex flex-col gap-4">
                     {faqs.map((faq, index) => (
-                        <div key={index} className="mb-6 border-b border-gray-300">
+                        <div
+                            key={faq.id}
+                            className="bg-[#FFF8F0] rounded-xl overflow-hidden transition-shadow hover:shadow-md border border-orange-50"
+                        >
                             <button
-                                className="w-full text-left py-6 text-xl md:text-2xl font-semibold flex justify-between items-center cursor-pointer bg-transparent border-none text-black hover:text-primary transition-colors font-outfit"
-                                onClick={() => toggleFAQ(index)}
+                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                className="w-full text-left p-6 flex items-center gap-4 group"
                             >
-                                {faq.question}
-                                <Plus className={`text-2xl text-primary transition-transform duration-300 ${openIndex === index ? 'rotate-45' : ''}`} />
+                                {/* Number Badge */}
+                                <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold shrink-0">
+                                    {faq.id}
+                                </span>
+                                <span className="font-bold text-sm md:text-base text-gray-800 flex-1">
+                                    {faq.q}
+                                </span>
                             </button>
+
                             <AnimatePresence>
                                 {openIndex === index && (
                                     <motion.div
-                                        className="overflow-hidden text-gray-600 leading-relaxed"
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3 }}
                                     >
-                                        <div className="pb-6">{faq.answer}</div>
+                                        <div className="px-12 pb-8 text-xs md:text-sm text-gray-500 leading-relaxed font-medium ml-6">
+                                            {faq.a}
+                                        </div>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
                         </div>
                     ))}
                 </div>
+
             </div>
         </section>
     );

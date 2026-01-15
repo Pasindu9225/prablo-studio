@@ -3,52 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 10%;
-    --foreground: 0 0% 100%;
-
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 32 100% 50%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 48 100% 50%;
-    --secondary-foreground: 0 0% 10%;
-
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-
-    --accent: 32 100% 50%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 32 100% 50%;
-
-    --radius: 0.5rem;
-
-    /* Custom vars for direct compatibility */
-    --primary-orange: #FF8800;
-    --primary-gold: #FFCC00;
-    --dark-bg: #1a1a1a;
-    --light-text: #ffffff;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
-    @apply bg-[var(--dark-bg)] text-[var(--light-text)] font-sans antialiased overflow-x-hidden;
+    @apply bg-white text-black font-inter antialiased overflow-x-hidden;
   }
 
   h1,
@@ -57,6 +13,16 @@
   h4,
   h5,
   h6 {
-    @apply font-outfit uppercase;
+    @apply font-outfit uppercase tracking-tighter;
   }
+}
+
+/* Vertical line for the branding section */
+.vertical-line {
+  @apply w-[1px] h-48 bg-gray-200 hidden lg:block mx-12;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
 }

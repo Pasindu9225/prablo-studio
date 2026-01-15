@@ -1,31 +1,35 @@
 "use client";
+import { motion } from "framer-motion";
 
-import { cn } from '@/lib/utils';
-
-// Duplicate logos for smooth infinite scroll
-const logos = [
-    "Google", "Amazon", "Netflix", "Spotify", "Meta", "Apple",
-    "Google", "Amazon", "Netflix", "Spotify", "Meta", "Apple"
-];
+const logos = ["W", "W", "W", "W", "W", "W", "W", "W", "W", "W"];
 
 export default function LogoTicker() {
     return (
-        <section className="py-16 bg-white overflow-hidden">
-            <div className="container mx-auto text-center px-4">
-                <h3 className="font-outfit text-primary text-2xl mb-12 uppercase tracking-widest font-bold">
-                    We're a Recognized Leader in Performance Marketing
-                </h3>
+        <section className="py-24 bg-white overflow-hidden">
+            <div className="container mx-auto px-4 text-center mb-20">
+                {/* Updated Typography to match image_970eee.png */}
+                <h2 className="font-outfit text-primary text-4xl md:text-6xl font-black uppercase leading-[1] tracking-tighter flex flex-col items-center">
+                    <span>WE'RE A RECOGNIZED</span>
+                    <span>LEADER IN PERFORMANCE</span>
+                    <span className="italic font-medium text-primary mt-1">MARKETING</span>
+                </h2>
+            </div>
 
-                <div className="flex overflow-hidden relative w-full mask-gradient">
-                    <div className="flex gap-16 animate-scroll whitespace-nowrap min-w-full">
-                        {logos.map((logo, idx) => (
-                            <div key={idx} className="text-3xl font-extrabold text-gray-300 flex items-center gap-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer">
-                                {/* Placeholder for SVG/Image */}
-                                <div className="w-8 h-8 bg-current rounded-full opacity-50"></div>
-                                {logo}
+            {/* Logo Scroll Section */}
+            <div className="flex relative w-full mask-gradient">
+                <div className="flex gap-16 md:gap-24 animate-scroll whitespace-nowrap">
+                    {[...logos, ...logos].map((logo, idx) => (
+                        <div key={idx} className="flex flex-col items-center group">
+                            <div className="text-5xl md:text-7xl font-black text-gray-200 group-hover:text-blue-500 transition-colors duration-500 cursor-default flex flex-col items-center">
+                                {/* The "W" Logo Style */}
+                                <span className="relative">
+                                    {logo}
+                                    <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-current opacity-20" />
+                                </span>
+                                <span className="text-[10px] tracking-[0.3em] mt-2 opacity-40">WEBASI</span>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

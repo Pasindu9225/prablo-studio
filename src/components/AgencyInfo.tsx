@@ -1,61 +1,68 @@
 "use client";
+import { useState, Suspense } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import { useGLTF, Stage, PresentationControls, Float } from '@react-three/drei';
 
-import { motion } from 'framer-motion';
+// Helper to load models
+function Model({ path }: { path: string }) {
+    const { scene } = useGLTF(path);
+    return <primitive object={scene} scale={1} />;
+}
 
 export default function AgencyInfo() {
+    const [activeId, setActiveId] = useState("01");
+
     return (
         <section className="py-24 px-[5%] bg-white flex flex-col lg:flex-row items-center gap-16 overflow-hidden">
             <div className="flex-1">
-                <motion.h2
-                    className="font-outfit text-5xl md:text-7xl leading-[1.1] text-primary mb-12 uppercase text-center lg:text-left"
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
+                <h2 className="font-outfit text-5xl md:text-7xl font-black text-primary mb-12 uppercase leading-[0.9] tracking-tighter">
                     Not Your<br />Average<br />Agency
-                </motion.h2>
+                </h2>
 
+                {/* List items with focus/gray-out effect */}
                 <div className="flex flex-col gap-10">
                     {[
-                        { id: "01", title: "Artificial Intelligence", desc: "We leverage AI to optimize campaigns and generate insights that humans miss." },
-                        { id: "02", title: "In-House Production", desc: "From video shoots to 3D rendering, our studio handles everything under one roof." },
-                        { id: "03", title: "Future-Ready", desc: "We don't just follow trends; we set them. Stay ahead of the curve with Prablo." }
-                    ].map((item, index) => (
-                        <motion.div
+                        { id: "01", title: "ARTIFICIAL INTELLIGENCE", desc: "We leverage AI to optimize campaigns.", path: "/models/ai.glb" },
+                        { id: "02", title: "IN-HOUSE PRODUCTION", desc: "Full-scale studio capabilities.", path: "/models/prod.glb" },
+                        { id: "03", title: "FUTURE-READY", desc: "Stay ahead of the curve.", path: "/models/future.glb" }
+                    ].map((item) => (
+                        <div
                             key={item.id}
-                            className="flex gap-6 items-start max-w-xl mx-auto lg:mx-0"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
+                            onClick={() => setActiveId(item.id)}
+                            className={`flex gap-6 items-start cursor-pointer transition-all duration-500 ${activeId === item.id ? 'opacity-100' : 'opacity-20 grayscale'}`}
                         >
-                            <span className="font-outfit text-3xl font-light text-gray-300 min-w-[50px]">{item.id}</span>
+                            <span className="font-outfit text-2xl font-light text-gray-300">{item.id}</span>
                             <div>
-                                <h4 className="text-2xl font-bold text-black mb-2">{item.title}</h4>
-                                <p className="text-gray-600 leading-relaxed text-lg">{item.desc}</p>
+                                <h4 className="text-xl font-extrabold uppercase">{item.title}</h4>
+                                <p className="text-gray-500 text-sm max-w-sm">{item.desc}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
 
-            <div className="flex-1 w-full flex justify-center relative">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="relative"
-                >
-                    {/* Placeholder for Robot Image */}
-                    <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center text-gray-400 shadow-2xl animate-[float_6s_ease-in-out_infinite]">
-                        <div className="text-center">
-                            <span className="block text-6xl mb-4">🤖</span>
-                            [3D Robot Illustration]
-                        </div>
-                    </div>
-                </motion.div>
+            <div className="flex-1 w-full flex justify-center relative min-h-[500px]">
+                {/* Design circle */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[550px] md:h-[550px] bg-gray-50 rounded-full" />
+
+                <div className="relative w-full h-[500px] z-10">
+                    <Canvas dpr={[1, 2]} camera={{ fov: 45 }}>
+                        <Suspense fallback={null}>
+                            {/* Note: shadows={false} or shadows="contact" works here in v9 */}
+                            <Stage environment="city" intensity={0.5} shadows={false}>
+                                <PresentationControls global zoom={0.8} polar={[-0.1, Math.PI / 4]}>
+                                    <Float speed={2} rotationIntensity={0.5}>
+                                        <AnimatePresence mode="wait">
+                                            {/* Model swaps based on activeId */}
+                                            <Model key={activeId} path={`/models/${activeId === '01' ? 'ai' : activeId === '02' ? 'prod' : 'future'}.glb`} />
+                                        </AnimatePresence>
+                                    </Float>
+                                </PresentationControls>
+                            </Stage>
+                        </Suspense>
+                    </Canvas>
+                </div>
             </div>
         </section>
     );
