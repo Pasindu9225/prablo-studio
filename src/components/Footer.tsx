@@ -7,16 +7,19 @@ export default function Footer() {
     return (
         <footer className="bg-white py-16 px-[5%] font-inter">
             {/* 1. The Call to Action Card */}
-            <div className="bg-gradient-to-r from-[#FF8C00] via-[#FFA500] to-[#FFD700] p-12 md:p-20 rounded-xl text-white text-center mb-20 shadow-lg max-w-[1400px] mx-auto">
-                <h2 className="font-outfit text-4xl md:text-7xl font-black mb-4 uppercase leading-none tracking-tighter">
-                    READY TO UPGRADE <br /> YOUR <span className="italic font-medium mt-1 font-pt-serif">BRAND?</span>
-                </h2>
-                <p className="mb-8 text-sm md:text-base opacity-90 font-medium">
-                    Step Into The Future Of Marketing With Prablo360.
-                </p>
-                <button className="bg-white text-primary px-10 py-4 rounded-md font-bold text-xs uppercase hover:bg-black hover:text-white transition-all shadow-md">
-                    Experience The Future
-                </button>
+            <div className="bg-[url('/bg2.png')] bg-cover bg-center bg-no-repeat p-12 md:p-20 rounded-xl text-white text-center mb-20 shadow-lg max-w-[1400px] mx-auto relative overflow-hidden">
+
+                <div className="relative z-10">
+                    <h2 className="font-outfit text-4xl md:text-7xl font-black mb-4 uppercase leading-none">
+                        READY TO UPGRADE <br /> YOUR <span className="italic font-medium mt-1 font-pt-serif">BRAND?</span>
+                    </h2>
+                    <p className="mb-8 text-sm md:text-base opacity-90 font-medium">
+                        Step Into The Future Of Marketing With Prablo360.
+                    </p>
+                    <button className="bg-white text-primary px-10 py-4 rounded-md font-bold text-xs uppercase hover:bg-black hover:text-white transition-all shadow-md">
+                        Experience The Future
+                    </button>
+                </div>
             </div>
 
             {/* 2. Main Footer Content */}
@@ -47,7 +50,7 @@ export default function Footer() {
 
                 {/* Company Links */}
                 <div className="flex flex-col gap-6">
-                    <h4 className="text-primary font-bold uppercase tracking-widest text-xs">Company</h4>
+                    <h4 className="text-primary font-bold uppercase text-xs">Company</h4>
                     <ul className="space-y-3">
                         {['Home', 'About', 'Service', 'Portfolio', 'Contact'].map(link => (
                             <li key={link} className="text-black font-medium text-sm cursor-pointer hover:text-primary transition-colors">{link}</li>
@@ -57,7 +60,7 @@ export default function Footer() {
 
                 {/* Service Links */}
                 <div className="flex flex-col gap-6">
-                    <h4 className="text-primary font-bold uppercase tracking-widest text-xs">Service</h4>
+                    <h4 className="text-primary font-bold uppercase text-xs">Service</h4>
                     <ul className="space-y-3">
                         {['Home', 'About', 'Service', 'Portfolio', 'Contact'].map(link => (
                             <li key={link} className="text-black font-medium text-sm cursor-pointer hover:text-primary transition-colors">{link}</li>
@@ -67,7 +70,7 @@ export default function Footer() {
 
                 {/* Address Info */}
                 <div className="flex flex-col gap-6">
-                    <h4 className="text-primary font-bold uppercase tracking-widest text-xs">Address</h4>
+                    <h4 className="text-primary font-bold uppercase text-xs">Address</h4>
                     <div className="flex flex-col gap-2 text-sm font-medium text-black">
                         <p>435, 15a Longdon Hill,<br />Colombo 00500</p>
                         <p>Ph: <span className="underline">+947 77 122 299</span></p>
@@ -78,7 +81,7 @@ export default function Footer() {
 
             {/* 3. Copyright Bar */}
             <div className="pt-8 border-t border-gray-100 flex justify-center">
-                <p className="text-white bg-primary w-full py-4 text-center rounded-sm font-medium text-xs tracking-widest uppercase">
+                <p className="text-white bg-primary w-full py-4 text-center rounded-sm font-medium text-xs uppercase">
                     Copyright: © 2026 Prablo 360. All Rights Reserved.
                 </p>
             </div>

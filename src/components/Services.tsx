@@ -64,7 +64,7 @@ export default function Services() {
 
                     {/* Left Side: Header */}
                     <div className="flex flex-col gap-2">
-                        <h2 className="text-white text-5xl md:text-[80px] font-black leading-[0.85] uppercase tracking-tighter">
+                        <h2 className="text-white text-5xl md:text-[80px] font-black leading-[0.85] uppercase">
                             OUR EXPERTISE<br />
                             <span className="italic font-medium mt-1 font-pt-serif">IN ACTION</span>
                         </h2>
@@ -94,7 +94,7 @@ export default function Services() {
                                                     {item.id}
                                                 </span>
                                             </div>
-                                            <h3 className="text-white font-bold text-[10px] md:text-xs uppercase tracking-widest max-w-[200px] leading-tight">
+                                            <h3 className="text-white font-bold text-[10px] md:text-xs uppercase max-w-[200px] leading-tight">
                                                 {item.title}
                                             </h3>
                                         </div>

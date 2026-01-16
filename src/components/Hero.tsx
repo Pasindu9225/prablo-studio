@@ -50,7 +50,7 @@ export default function Hero() {
                     />
                 </div>
                 <div className="z-10 relative flex flex-col items-center max-w-5xl mx-auto pt-20">
-                    <h1 className="text-white text-5xl md:text-7xl lg:text-7xl font-black leading-8 mb-8 tracking-wider">
+                    <h1 className="text-white text-5xl md:text-7xl lg:text-7xl font-black leading-8 mb-8">
                         BEYOND MARKETING.<br />
                         WE ARE THE <span className="italic font-pt-serif font-light">FUTURE</span><br />
                         OF DIGITAL IMPACT.
@@ -60,7 +60,7 @@ export default function Hero() {
                         Combine Artificial Intelligence With Cinematic Storytelling To Build Brands That Dominate The
                         Market
                     </p>
-                    <button className="bg-white text-primary px-10 py-4 rounded-sm font-bold text-xs uppercase hover:bg-black hover:text-white transition-all shadow-lg tracking-widest">
+                    <button className="bg-white text-primary px-10 py-4 rounded-sm font-bold text-xs uppercase hover:bg-black hover:text-white transition-all shadow-lg">
                         Experience The Future
                     </button>
                 </div>
@@ -70,10 +70,10 @@ export default function Hero() {
             <div className="bg-white py-20 px-[5%] flex flex-wrap justify-around items-center border-b border-gray-50">
                 {stats.map((stat, i) => (
                     <div key={i} className="text-center min-w-[200px] mb-8 lg:mb-0">
-                        <span className="block text-6xl font-light text-black mb-2 tracking-tighter">
+                        <span className="block text-6xl font-light text-black mb-2">
                             <Counter value={stat.num} />{stat.suffix}
                         </span>
-                        <span className="text-[11px] font-medium text-gray-400 uppercase tracking-[0.2em]">{stat.label}</span>
+                        <p className="text-[10px] font-bold uppercase text-gray-400 mt-4">- Cinematography by 4K Films -</p>
                     </div>
                 ))}
             </div>

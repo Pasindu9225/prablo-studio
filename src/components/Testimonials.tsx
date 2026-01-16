@@ -7,13 +7,37 @@ const testimonials = [
         name: "Olivia Richardson",
         location: "New York, USA",
     },
-    // Add 4-5 more objects to ensure the loop is seamless
+    {
+        quote: "Prablo360 transformed our digital presence completely. Their AI-driven approach gave us insights we never knew we needed.",
+        name: "James Anderson",
+        location: "London, UK",
+    },
+    {
+        quote: "The creativity and technical expertise this team brings to the table is unmatched. Truly the future of digital marketing.",
+        name: "Sarah Jenkins",
+        location: "Sydney, Australia",
+    },
+    {
+        quote: "From the branding to the website, everything was executed to perfection. Highly recommend their services!",
+        name: "Michael Chen",
+        location: "Singapore",
+    },
+    {
+        quote: "Working with Prablo360 was a game-changer for our startup. We saw a 200% increase in leads within 3 months.",
+        name: "Emily Davis",
+        location: "Toronto, Canada",
+    },
+    {
+        quote: "The best agency we've worked with. Professional, innovative, and results-oriented.",
+        name: "David Wilson",
+        location: "Dubai, UAE",
+    },
 ];
 
 export default function Testimonials() {
     return (
         /* 1. Reduced vertical padding from py-24 to py-12 */
-        <section className="py-12 bg-primary relative overflow-hidden">
+        <section className="py-12 bg-[url('/bg1.png')] bg-cover bg-center bg-no-repeat relative overflow-hidden">
 
             {/* 2. Reduced header margin from mb-16 to mb-8 */}
             <div className="text-center mb-8 px-4">
@@ -29,21 +53,30 @@ export default function Testimonials() {
             <div className="flex flex-col gap-4">
 
                 {/* Row 1: Moving Left */}
-                <div className="flex overflow-hidden relative">
-                    <div className="flex gap-4 animate-scroll whitespace-nowrap py-2">
-                        {[...testimonials, ...testimonials, ...testimonials].map((item, idx) => (
+                <div className="flex overflow-hidden relative w-full">
+                    <motion.div
+                        className="flex gap-4 w-max"
+                        animate={{ x: "-50%" }}
+                        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                    >
+                        {[...testimonials, ...testimonials].map((item, idx) => (
                             <TestimonialCard key={idx} item={item} />
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Row 2: Moving Right */}
-                <div className="flex overflow-hidden relative">
-                    <div className="flex gap-4 animate-scroll whitespace-nowrap py-2 [animation-direction:reverse]">
-                        {[...testimonials, ...testimonials, ...testimonials].map((item, idx) => (
+                <div className="flex overflow-hidden relative w-full">
+                    <motion.div
+                        className="flex gap-4 w-max"
+                        initial={{ x: "-50%" }}
+                        animate={{ x: "0%" }}
+                        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                    >
+                        {[...testimonials, ...testimonials].map((item, idx) => (
                             <TestimonialCard key={idx} item={item} />
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
 
             </div>
@@ -64,7 +97,7 @@ function TestimonialCard({ item }: { item: any }) {
                 </div>
                 <div className="flex flex-col">
                     <span className="font-bold text-xs text-black">{item.name}</span>
-                    <span className="text-[9px] text-gray-400 uppercase font-bold tracking-widest">{item.location}</span>
+                    <span className="text-[9px] text-gray-400 uppercase font-bold">{item.location}</span>
                 </div>
             </div>
         </div>
