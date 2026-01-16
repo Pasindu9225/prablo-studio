@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -37,13 +38,14 @@ export default function Navbar() {
             <nav className={navClasses}>
                 {/* 1. Stacked Brand Logo */}
                 <Link href="/" className="flex flex-col leading-[0.8] group">
-                    <span className={`font-outfit font-black text-xl tracking-tighter transition-colors ${isWhiteNav ? "text-black" : "text-white"
-                        }`}>
-                        PRABLO
-                    </span>
-                    <span className="font-outfit font-black text-2xl tracking-tighter text-primary">
-                        360
-                    </span>
+                    <Image
+                        src="/logo.png"
+                        alt="PRABLO 360 Logo"
+                        width={80}
+                        height={40}
+                        className="object-contain"
+                        priority
+                    />
                 </Link>
 
                 {/* 2. Desktop Navigation */}

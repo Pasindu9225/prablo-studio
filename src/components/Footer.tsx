@@ -1,4 +1,6 @@
 "use client";
+import Link from 'next/link';
+import Image from 'next/image';
 import { Facebook, Youtube, Linkedin, Music2 } from 'lucide-react';
 
 export default function Footer() {
@@ -22,10 +24,15 @@ export default function Footer() {
 
                 {/* Brand Info */}
                 <div className="flex flex-col gap-6">
-                    <div className="flex flex-col">
-                        <h3 className="font-outfit text-5xl font-black leading-none text-black">PRABLO</h3>
-                        <h3 className="font-outfit text-5xl font-black leading-none text-primary">360</h3>
-                    </div>
+                    <Link href="/" className="flex flex-col">
+                        <Image
+                            src="/logo.png"
+                            alt="PRABLO 360 Logo"
+                            width={150}
+                            height={50}
+                            className="object-contain"
+                        />
+                    </Link>
                     <p className="text-gray-600 text-sm max-w-xs leading-relaxed font-medium">
                         <span className="text-primary">Prablo360</span> Isn't Just An Agency; It's A Digital Ecosystem. We Recognized That Traditional Marketing Is Dead.
                     </p>

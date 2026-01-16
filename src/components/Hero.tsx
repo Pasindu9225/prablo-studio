@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring, animate } from "framer-motion";
 import Balatro from "./Balatro";
@@ -48,13 +49,20 @@ export default function Hero() {
                         pixelFilter={750}
                     />
                 </div>
-                <div className="z-10 relative">
-                    <span className="bg-white text-primary text-[10px] font-bold px-4 py-2 uppercase tracking-[0.2em] rounded-sm mb-8 inline-block">
-                        Experience the Future
-                    </span>
-                    <h1 className="text-white text-5xl md:text-8xl font-black leading-[0.9] mb-8">
-                        BEYOND MARKETING.
+                <div className="z-10 relative flex flex-col items-center max-w-5xl mx-auto pt-20">
+                    <h1 className="text-white text-5xl md:text-7xl lg:text-7xl font-black leading-8 mb-8 tracking-wider">
+                        BEYOND MARKETING.<br />
+                        WE ARE THE <span className="italic font-pt-serif font-light">FUTURE</span><br />
+                        OF DIGITAL IMPACT.
                     </h1>
+                    <p className="text-white/90 text-xs md:text-lg font-light max-w-3xl mx-auto leading-relaxed mb-10">
+                        Prablo360 Is Sri Lanka's First AI-Powered Digital Agency Fused With A High-End Creative Studio. We
+                        Combine Artificial Intelligence With Cinematic Storytelling To Build Brands That Dominate The
+                        Market
+                    </p>
+                    <button className="bg-white text-primary px-10 py-4 rounded-sm font-bold text-xs uppercase hover:bg-black hover:text-white transition-all shadow-lg tracking-widest">
+                        Experience The Future
+                    </button>
                 </div>
             </div>
 
@@ -71,22 +79,27 @@ export default function Hero() {
             </div>
 
             {/* Branding Section */}
-            <div className="py-24 px-[5%] flex flex-col lg:flex-row items-center justify-center bg-white">
-                <div className="text-center lg:text-right flex-1">
-                    <h2 className="text-7xl md:text-[100px] font-black leading-[0.8] text-black">PRABLO</h2>
-                    <h2 className="text-7xl md:text-[100px] font-black leading-[0.8] text-primary">360</h2>
+            <div className="py-24 px-[5%] flex flex-col lg:flex-row items-center justify-center bg-white gap-8 lg:gap-16">
+                <div className="flex-1 flex justify-center lg:justify-end">
+                    <Image
+                        src="/logo.png"
+                        alt="PRABLO 360"
+                        width={300}
+                        height={100}
+                        className="object-contain"
+                    />
                 </div>
 
                 <div className="vertical-line" />
 
-                <div className="text-center lg:text-left flex-1 mt-12 lg:mt-0">
-                    <div className="flex items-center justify-center lg:justify-start gap-4 mb-2">
-                        {/* Simple SVG icon to mimic the aperture logo */}
-                        <div className="w-16 h-16 rounded-full border-[6px] border-black border-r-transparent rotate-45" />
-                        <h2 className="text-6xl md:text-8xl font-black text-black leading-none">PRABLO</h2>
-                    </div>
-                    <h2 className="text-6xl md:text-8xl font-black text-primary leading-none ml-2">STUDIOS</h2>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mt-4">- Cinematography by 4K Films -</p>
+                <div className="flex-1 flex justify-center lg:justify-start">
+                    <Image
+                        src="/logoStudio.png"
+                        alt="PRABLO STUDIOS"
+                        width={300}
+                        height={100}
+                        className="object-contain"
+                    />
                 </div>
             </div>
         </section>
