@@ -1,14 +1,17 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
     const { scrollYProgress } = useScroll();
 
-    // Smooth spring physics for the progress bar
+    // Smooth scroll progress bar
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
@@ -16,35 +19,120 @@ export default function Navbar() {
     });
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
+        const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Change nav appearance on scroll or if not on the Home page
+    const isWhiteNav = scrolled || pathname !== '/';
+
+    const navClasses = `fixed top-0 w-full z-[100] transition-all duration-500 px-[5%] flex justify-between items-center ${isWhiteNav
+        ? "bg-white/95 backdrop-blur-md py-2 shadow-sm"
+        : "bg-transparent py-7"
+        }`;
+
     return (
-        <nav className={cn(
-            "fixed top-0 w-full z-[100] transition-all duration-300 px-[5%] py-6 flex justify-between items-center",
-            scrolled ? "bg-white/90 backdrop-blur-md py-4 shadow-sm" : "bg-transparent text-white"
-        )}>
-            <div className={cn("font-outfit font-black text-2xl tracking-tighter", scrolled ? "text-black" : "text-white")}>
-                PRABLO <span className="text-primary">STUDIO</span>
-            </div>
+        <>
+            <nav className={navClasses}>
+                {/* 1. Stacked Brand Logo */}
+                <Link href="/" className="flex flex-col leading-[0.8] group">
+                    <span className={`font-outfit font-black text-xl tracking-tighter transition-colors ${isWhiteNav ? "text-black" : "text-white"
+                        }`}>
+                        PRABLO
+                    </span>
+                    <span className="font-outfit font-black text-2xl tracking-tighter text-primary">
+                        360
+                    </span>
+                </Link>
 
-            <div className={cn("hidden md:flex gap-8 font-bold text-[13px] uppercase tracking-widest", scrolled ? "text-black/70" : "text-white/80")}>
-                {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
-                    <Link key={item} href={`#${item.toLowerCase()}`} className="hover:text-primary transition-colors">{item}</Link>
-                ))}
-            </div>
+                {/* 2. Desktop Navigation */}
+                <div className={`hidden md:flex gap-10 font-bold text-[12px] uppercase tracking-[0.2em] transition-colors ${isWhiteNav ? "text-black/80" : "text-white/90"
+                    }`}>
+                    {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => {
+                        const href = item === 'Home' ? '/' : `/${item.toLowerCase()}`;
+                        const isActive = pathname === href;
 
-            <button className="bg-primary text-white px-7 py-2 rounded-md font-bold text-xs uppercase hover:bg-black transition-all">
-                Contact
-            </button>
+                        return (
+                            <Link
+                                key={item}
+                                href={href}
+                                className={`hover:text-primary transition-colors relative group ${isActive ? 'text-primary' : ''}`}
+                            >
+                                {item}
+                                <span className={`absolute -bottom-1 left-0 h-[2px] bg-primary transition-all group-hover:w-full ${isActive ? 'w-full' : 'w-0'}`} />
+                            </Link>
+                        );
+                    })}
+                </div>
 
-            {/* Sticky Progress Bar */}
-            <motion.div
-                className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary origin-[0%]"
-                style={{ scaleX }}
-            />
-        </nav>
+                {/* 3. Action Button & Mobile Toggle */}
+                <div className="flex items-center gap-4">
+                    <Link href="/contact">
+                        <button className="hidden md:block bg-primary text-white px-8 py-2 rounded-sm font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg active:scale-95">
+                            Hire Us
+                        </button>
+                    </Link>
+
+                    <button
+                        className={`md:hidden p-2 transition-colors ${isWhiteNav ? "text-black" : "text-white"}`}
+                        onClick={() => setMobileMenuOpen(true)}
+                    >
+                        <Menu size={28} />
+                    </button>
+                </div>
+
+                {/* Sticky Progress Bar at the bottom of Navbar */}
+                <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary origin-[0%]"
+                    style={{ scaleX }}
+                />
+            </nav>
+
+            {/* 4. Responsive Mobile Menu Overlay */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ type: 'tween', duration: 0.4 }}
+                        className="fixed inset-0 z-[200] bg-black flex flex-col p-8"
+                    >
+                        {/* Mobile Header */}
+                        <div className="flex justify-between items-center mb-16">
+                            <div className="flex flex-col leading-[0.8]">
+                                <span className="font-outfit font-black text-2xl text-white">PRABLO</span>
+                                <span className="font-outfit font-black text-2xl text-primary">360</span>
+                            </div>
+                            <button onClick={() => setMobileMenuOpen(false)} className="text-white">
+                                <X size={32} />
+                            </button>
+                        </div>
+
+                        {/* Mobile Links */}
+                        <div className="flex flex-col gap-8">
+                            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+                                <Link
+                                    key={item}
+                                    href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="text-white text-4xl font-black uppercase italic hover:text-primary transition-colors"
+                                >
+                                    {item}
+                                </Link>
+                            ))}
+                        </div>
+
+                        {/* Mobile Footer Cta */}
+                        <div className="mt-auto">
+                            <button className="w-full bg-primary text-white py-5 rounded-sm font-black text-sm uppercase tracking-widest">
+                                Hire Us Today
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 }
