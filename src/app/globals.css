@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-white text-black font-inter antialiased overflow-x-hidden;
+    @apply bg-white text-black font-dm-sans antialiased overflow-x-hidden;
   }
 
   h1,
@@ -13,7 +13,7 @@
   h4,
   h5,
   h6 {
-    @apply font-outfit uppercase tracking-tighter;
+    @apply font-dm-sans uppercase tracking-tighter;
   }
 }
 

@@ -13,7 +13,8 @@ module.exports = {
             },
             fontFamily: {
                 outfit: ["var(--font-outfit)", "sans-serif"],
-                inter: ["var(--font-inter)", "sans-serif"],
+                "dm-sans": ["var(--font-dm-sans)", "sans-serif"],
+                "pt-serif": ["var(--font-pt-serif)", "serif"],
             },
             animation: {
                 scroll: "scroll 40s linear infinite",

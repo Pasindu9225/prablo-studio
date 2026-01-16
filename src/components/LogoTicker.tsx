@@ -11,7 +11,7 @@ export default function LogoTicker() {
                 <h2 className="font-outfit text-primary text-4xl md:text-6xl font-black uppercase leading-[1] tracking-tighter flex flex-col items-center">
                     <span>WE'RE A RECOGNIZED</span>
                     <span>LEADER IN PERFORMANCE</span>
-                    <span className="italic font-medium text-primary mt-1">MARKETING</span>
+                    <span className="italic font-medium mt-1 font-pt-serif">MARKETING</span>
                 </h2>
             </div>
 

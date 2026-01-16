@@ -7,7 +7,7 @@ export default function Footer() {
             {/* 1. The Call to Action Card */}
             <div className="bg-gradient-to-r from-[#FF8C00] via-[#FFA500] to-[#FFD700] p-12 md:p-20 rounded-xl text-white text-center mb-20 shadow-lg max-w-[1400px] mx-auto">
                 <h2 className="font-outfit text-4xl md:text-7xl font-black mb-4 uppercase leading-none tracking-tighter">
-                    READY TO UPGRADE <br /> YOUR <span className="italic font-light">BRAND?</span>
+                    READY TO UPGRADE <br /> YOUR <span className="italic font-medium mt-1 font-pt-serif">BRAND?</span>
                 </h2>
                 <p className="mb-8 text-sm md:text-base opacity-90 font-medium">
                     Step Into The Future Of Marketing With Prablo360.

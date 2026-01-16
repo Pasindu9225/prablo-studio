@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring, animate } from "framer-motion";
+import Balatro from "./Balatro";
 
 // Helper Counter Component
 function Counter({ value }: { value: number }) {
@@ -33,8 +34,21 @@ export default function Hero() {
     return (
         <section className="w-full">
             {/* Hero Section */}
-            <div className="h-[70vh] bg-primary flex flex-col items-center justify-center text-center px-[5%] relative">
-                <div className="z-10">
+            <div className="h-[95vh] bg-primary flex flex-col items-center justify-center text-center px-[5%] relative overflow-hidden">
+                <div className="absolute inset-0 z-0 opacity-40">
+                    <Balatro
+                        spinRotation={-3.5}
+                        spinSpeed={7.5}
+                        color1="#ff8d00"
+                        color2="#f0dbc1"
+                        color3="#f39420"
+                        contrast={4}
+                        lighting={0.4}
+                        spinAmount={0.35}
+                        pixelFilter={750}
+                    />
+                </div>
+                <div className="z-10 relative">
                     <span className="bg-white text-primary text-[10px] font-bold px-4 py-2 uppercase tracking-[0.2em] rounded-sm mb-8 inline-block">
                         Experience the Future
                     </span>

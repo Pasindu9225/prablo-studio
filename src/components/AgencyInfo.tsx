@@ -18,7 +18,7 @@ export default function AgencyInfo() {
         <section className="py-24 px-[5%] bg-white flex flex-col lg:flex-row items-center gap-16 overflow-hidden">
             <div className="flex-1">
                 <h2 className="font-outfit text-5xl md:text-7xl font-black text-primary mb-12 uppercase leading-[0.9] tracking-tighter">
-                    Not Your<br />Average<br />Agency
+                    Not Your<br />Average<br /> <span className='italic font-medium text-primary mt-1 font-pt-serif'>Agency</span>
                 </h2>
 
                 {/* List items with focus/gray-out effect */}
@@ -45,7 +45,7 @@ export default function AgencyInfo() {
 
             <div className="flex-1 w-full flex justify-center relative min-h-[500px]">
                 {/* Design circle */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[550px] md:h-[550px] bg-gray-50 rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[550px] md:h-[550px] " />
 
                 <div className="relative w-full h-[500px] z-10 flex items-center justify-center">
                     <AnimatePresence mode="wait">
@@ -57,7 +57,7 @@ export default function AgencyInfo() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
                             transition={{ duration: 0.5 }}
-                            className="object-contain max-h-full max-w-full drop-shadow-xl"
+                            className="object-contain max-h-full max-w-full "
                         />
                     </AnimatePresence>
                 </div>

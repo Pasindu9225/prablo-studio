@@ -18,7 +18,7 @@ export default function Testimonials() {
             {/* 2. Reduced header margin from mb-16 to mb-8 */}
             <div className="text-center mb-8 px-4">
                 <h2 className="text-white text-4xl md:text-6xl font-black uppercase leading-none mb-2">
-                    WHAT PEOPLE ARE <span className="italic font-light">SAYING?</span>
+                    WHAT PEOPLE ARE <span className="italic font-medium mt-1 font-pt-serif">SAYING?</span>
                 </h2>
                 <p className="text-white/80 text-[10px] md:text-xs max-w-lg mx-auto leading-relaxed">
                     Don't Just Take Our Word For It—See What Our Customers Have To Say About Their Experience!
