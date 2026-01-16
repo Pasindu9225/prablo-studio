@@ -1,17 +1,18 @@
 "use client";
-import { useState, Suspense } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { useGLTF, Stage, PresentationControls, Float } from '@react-three/drei';
-
-// Helper to load models
-function Model({ path }: { path: string }) {
-    const { scene } = useGLTF(path);
-    return <primitive object={scene} scale={1} />;
-}
 
 export default function AgencyInfo() {
     const [activeId, setActiveId] = useState("01");
+
+    const getImage = (id: string) => {
+        switch (id) {
+            case "01": return "/agi1.png";
+            case "02": return "/agi2.png";
+            case "03": return "/agi3.png";
+            default: return "/agi1.png";
+        }
+    };
 
     return (
         <section className="py-24 px-[5%] bg-white flex flex-col lg:flex-row items-center gap-16 overflow-hidden">
@@ -23,9 +24,9 @@ export default function AgencyInfo() {
                 {/* List items with focus/gray-out effect */}
                 <div className="flex flex-col gap-10">
                     {[
-                        { id: "01", title: "ARTIFICIAL INTELLIGENCE", desc: "We leverage AI to optimize campaigns.", path: "/models/ai.glb" },
-                        { id: "02", title: "IN-HOUSE PRODUCTION", desc: "Full-scale studio capabilities.", path: "/models/prod.glb" },
-                        { id: "03", title: "FUTURE-READY", desc: "Stay ahead of the curve.", path: "/models/future.glb" }
+                        { id: "01", title: "ARTIFICIAL INTELLIGENCE", desc: "We leverage AI to optimize campaigns." },
+                        { id: "02", title: "IN-HOUSE PRODUCTION", desc: "Full-scale studio capabilities." },
+                        { id: "03", title: "FUTURE-READY", desc: "Stay ahead of the curve." }
                     ].map((item) => (
                         <div
                             key={item.id}
@@ -46,22 +47,19 @@ export default function AgencyInfo() {
                 {/* Design circle */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[550px] md:h-[550px] bg-gray-50 rounded-full" />
 
-                <div className="relative w-full h-[500px] z-10">
-                    <Canvas dpr={[1, 2]} camera={{ fov: 45 }}>
-                        <Suspense fallback={null}>
-                            {/* Note: shadows={false} or shadows="contact" works here in v9 */}
-                            <Stage environment="city" intensity={0.5} shadows={false}>
-                                <PresentationControls global zoom={0.8} polar={[-0.1, Math.PI / 4]}>
-                                    <Float speed={2} rotationIntensity={0.5}>
-                                        <AnimatePresence mode="wait">
-                                            {/* Model swaps based on activeId */}
-                                            <Model key={activeId} path={`/models/${activeId === '01' ? 'ai' : activeId === '02' ? 'prod' : 'future'}.glb`} />
-                                        </AnimatePresence>
-                                    </Float>
-                                </PresentationControls>
-                            </Stage>
-                        </Suspense>
-                    </Canvas>
+                <div className="relative w-full h-[500px] z-10 flex items-center justify-center">
+                    <AnimatePresence mode="wait">
+                        <motion.img
+                            key={activeId}
+                            src={getImage(activeId)}
+                            alt={`Agency Feature ${activeId}`}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ duration: 0.5 }}
+                            className="object-contain max-h-full max-w-full drop-shadow-xl"
+                        />
+                    </AnimatePresence>
                 </div>
             </div>
         </section>
