@@ -19,7 +19,7 @@
 
 /* Vertical line for the branding section */
 .vertical-line {
-  @apply w-[1px] h-48 bg-gray-200 hidden lg:block mx-12;
+  @apply w-[1px] h-48 bg-orange-200 hidden lg:block mx-12;
 }
 
 /* Hide scrollbar */

@@ -5,7 +5,7 @@ import { Facebook, Youtube, Linkedin, Music2 } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-white py-16 px-[5%] font-inter">
+        <footer className="bg-white pt-16  font-inter">
             {/* 1. The Call to Action Card */}
             <div className="bg-[url('/bg2.png')] bg-cover bg-center bg-no-repeat p-12 md:p-20 rounded-xl text-white text-center mb-20 shadow-lg max-w-[1400px] mx-auto relative overflow-hidden">
 
@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
 
             {/* 2. Main Footer Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 px-[5%]">
 
                 {/* Brand Info */}
                 <div className="flex flex-col gap-6">
@@ -82,7 +82,7 @@ export default function Footer() {
             {/* 3. Copyright Bar */}
             <div className="pt-8 border-t border-gray-100 flex justify-center">
                 <p className="text-white bg-primary w-full py-4 text-center rounded-sm font-medium text-xs uppercase">
-                    Copyright: © 2026 Prablo 360. All Rights Reserved.
+                    Copyright: © 2026 Prablo 360. All Rights Reserved. <span className="mx-2">|</span> <Link href="https://webasi.co" target="_blank" className="hover:text-black transition-colors">Design by WEBASI</Link>
                 </p>
             </div>
         </footer>

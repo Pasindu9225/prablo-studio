@@ -37,14 +37,14 @@ const testimonials = [
 export default function Testimonials() {
     return (
         /* 1. Reduced vertical padding from py-24 to py-12 */
-        <section className="py-12 bg-[url('/bg1.png')] bg-cover bg-center bg-no-repeat relative overflow-hidden">
+        <section className="py-16 bg-[url('/bg1.png')] bg-cover bg-center bg-no-repeat relative overflow-hidden">
 
             {/* 2. Reduced header margin from mb-16 to mb-8 */}
             <div className="text-center mb-8 px-4">
                 <h2 className="text-white text-4xl md:text-6xl font-black uppercase leading-none mb-2">
                     WHAT PEOPLE ARE <span className="italic font-medium mt-1 font-pt-serif">SAYING?</span>
                 </h2>
-                <p className="text-white/80 text-[10px] md:text-xs max-w-lg mx-auto leading-relaxed">
+                <p className="text-white/90 text-xs md:text-lg font-light max-w-3xl mx-auto leading-relaxed mb-10">
                     Don't Just Take Our Word For It—See What Our Customers Have To Say About Their Experience!
                 </p>
             </div>
@@ -96,8 +96,8 @@ function TestimonialCard({ item }: { item: any }) {
                     {item.name[0]}
                 </div>
                 <div className="flex flex-col">
-                    <span className="font-bold text-xs text-black">{item.name}</span>
-                    <span className="text-[9px] text-gray-400 uppercase font-bold">{item.location}</span>
+                    <span className="font-bold text-sm text-black">{item.name}</span>
+                    <span className="text-[9px] text-gray-400 uppercase font-light">{item.location}</span>
                 </div>
             </div>
         </div>

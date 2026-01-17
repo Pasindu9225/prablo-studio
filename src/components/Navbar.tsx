@@ -59,7 +59,7 @@ export default function Navbar() {
                             <Link
                                 key={item}
                                 href={href}
-                                className={`hover:text-primary transition-colors relative group `}
+                                className={` transition-colors relative group `}
                             >
                                 {item}
                                 <span className={`absolute -bottom-1 left-0 h-[2px] transition-all group-hover:w-full ${isActive ? 'w-full' : 'w-0'} ${isWhiteNav ? "bg-primary" : "bg-white"}`} />
@@ -71,10 +71,10 @@ export default function Navbar() {
                 {/* 3. Action Button & Mobile Toggle */}
                 <div className="flex items-center gap-4">
                     <Link href="/contact">
-                        <button className={`hidden md:block px-8 py-2 rounded-sm font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg active:scale-95 ${isWhiteNav ? "bg-primary text-white" : "bg-white text-black"}`}>
+                        <button className={`hidden md:block px-8 py-2 rounded-sm font-black text-primary text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg active:scale-95 ${isWhiteNav ? "bg-primary text-white" : "bg-white text-black"}`}>
                             Hire Us
                         </button>
-                    </Link>
+                    </Link> 
 
                     <button
                         className={`md:hidden p-2 transition-colors ${isWhiteNav ? "text-black" : "text-white"}`}

@@ -73,18 +73,18 @@ export default function Hero() {
                         <span className="block text-6xl font-light text-black mb-2">
                             <Counter value={stat.num} />{stat.suffix}
                         </span>
-                        <p className="text-[10px] font-bold uppercase text-gray-400 mt-4">- Cinematography by 4K Films -</p>
+                        <p className="uppercase text-gray-400 text-xs md:text-lg font-light max-w-3xl mx-auto leading-relaxed mb-10">{stat.label}</p>
                     </div>
                 ))}
             </div>
 
             {/* Branding Section */}
-            <div className="py-24 px-[5%] flex flex-col lg:flex-row items-center justify-center bg-white gap-8 lg:gap-16">
+            <div className="pb-24 px-[5%] flex flex-col lg:flex-row items-center justify-center bg-white gap-8 lg:gap-16">
                 <div className="flex-1 flex justify-center lg:justify-end">
                     <Image
                         src="/logo.png"
                         alt="PRABLO 360"
-                        width={300}
+                        width={400}
                         height={100}
                         className="object-contain"
                     />
@@ -96,7 +96,7 @@ export default function Hero() {
                     <Image
                         src="/logoStudio.png"
                         alt="PRABLO STUDIOS"
-                        width={300}
+                        width={400}
                         height={100}
                         className="object-contain"
                     />

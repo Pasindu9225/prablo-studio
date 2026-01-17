@@ -68,7 +68,7 @@ export default function Services() {
                             OUR EXPERTISE<br />
                             <span className="italic font-medium mt-1 font-pt-serif">IN ACTION</span>
                         </h2>
-                        <p className="text-white/80 font-medium text-xs md:text-sm max-w-xs mt-4">
+                        <p className="text-white/90 text-xs md:text-lg font-light max-w-3xl  leading-relaxed mb-10">
                             Blending AI Technology With Creative Brilliance.
                         </p>
                     </div>

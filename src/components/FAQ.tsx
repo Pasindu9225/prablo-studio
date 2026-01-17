@@ -48,10 +48,10 @@ export default function FAQ() {
                                 className="w-full text-left p-6 flex items-center gap-4 group"
                             >
                                 {/* Number Badge */}
-                                <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold shrink-0">
+                                <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-light shrink-0">
                                     {faq.id}
                                 </span>
-                                <span className="font-bold text-sm md:text-base text-gray-800 flex-1">
+                                <span className="font-bold text-md md:text-base text-gray-800 flex-1">
                                     {faq.q}
                                 </span>
                             </button>

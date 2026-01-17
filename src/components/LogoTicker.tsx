@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const logos = ["W", "W", "W", "W", "W", "W", "W", "W", "W", "W"];
+const logos = Array(10).fill("/LogoList/l1.png");
 
 export default function LogoTicker() {
     return (
@@ -17,16 +18,16 @@ export default function LogoTicker() {
 
             {/* Logo Scroll Section */}
             <div className="flex relative w-full mask-gradient">
-                <div className="flex gap-16 md:gap-24 animate-scroll whitespace-nowrap">
+                <div className="flex gap-16 md:gap-16 animate-scroll whitespace-nowrap items-center">
                     {[...logos, ...logos].map((logo, idx) => (
-                        <div key={idx} className="flex flex-col items-center group">
-                            <div className="text-5xl md:text-7xl font-black text-gray-200 group-hover:text-blue-500 transition-colors duration-500 cursor-default flex flex-col items-center">
-                                {/* The "W" Logo Style */}
-                                <span className="relative">
-                                    {logo}
-                                    <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-current opacity-20" />
-                                </span>
-                                <span className="text-[10px] tracking-[0.3em] mt-2 opacity-40">WEBASI</span>
+                        <div key={idx} className="flex flex-col items-center group shrink-0">
+                            <div className="relative w-32 h-16 md:w-40 md:h-40 grayscale hover:grayscale-0 transition-all duration-500 cursor-default">
+                                <Image
+                                    src={logo}
+                                    alt="Client Logo"
+                                    fill
+                                    className="object-contain"
+                                />
                             </div>
                         </div>
                     ))}

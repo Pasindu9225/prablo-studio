@@ -33,10 +33,10 @@ export default function AgencyInfo() {
                             onClick={() => setActiveId(item.id)}
                             className={`flex gap-6 items-start cursor-pointer transition-all duration-500 ${activeId === item.id ? 'opacity-100' : 'opacity-20 grayscale'}`}
                         >
-                            <span className="font-outfit text-2xl font-light text-gray-300">{item.id}</span>
+                            <span className=" text-7xl font-light text-gray-300">{item.id}</span>
                             <div>
-                                <h4 className="text-xl font-extrabold uppercase">{item.title}</h4>
-                                <p className="text-gray-500 text-sm max-w-sm">{item.desc}</p>
+                                <h4 className="text-3xl font-light uppercase">{item.title}</h4>
+                                <p className="text-gray-500 font-light text-md max-w-sm">{item.desc}</p>
                             </div>
                         </div>
                     ))}
