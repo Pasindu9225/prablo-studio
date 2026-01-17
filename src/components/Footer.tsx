@@ -36,7 +36,7 @@ export default function Footer() {
                             className="object-contain"
                         />
                     </Link>
-                    <p className="text-gray-600 text-sm max-w-xs leading-relaxed font-medium">
+                    <p className="text-gray-600 text-md max-w-xs leading-relaxed font-medium">
                         <span className="text-primary">Prablo360</span> Isn't Just An Agency; It's A Digital Ecosystem. We Recognized That Traditional Marketing Is Dead.
                     </p>
                     {/* Social Icons matching design colors */}
@@ -50,28 +50,28 @@ export default function Footer() {
 
                 {/* Company Links */}
                 <div className="flex flex-col gap-6">
-                    <h4 className="text-primary font-bold uppercase text-xs">Company</h4>
+                    <h4 className="text-primary font-bold uppercase text-2xl">Company</h4>
                     <ul className="space-y-3">
                         {['Home', 'About', 'Service', 'Portfolio', 'Contact'].map(link => (
-                            <li key={link} className="text-black font-medium text-sm cursor-pointer hover:text-primary transition-colors">{link}</li>
+                            <li key={link} className="text-black font-medium text-md cursor-pointer hover:text-primary transition-colors">{link}</li>
                         ))}
                     </ul>
                 </div>
 
                 {/* Service Links */}
                 <div className="flex flex-col gap-6">
-                    <h4 className="text-primary font-bold uppercase text-xs">Service</h4>
+                    <h4 className="text-primary font-bold uppercase  text-2xl">Service</h4>
                     <ul className="space-y-3">
                         {['Home', 'About', 'Service', 'Portfolio', 'Contact'].map(link => (
-                            <li key={link} className="text-black font-medium text-sm cursor-pointer hover:text-primary transition-colors">{link}</li>
+                            <li key={link} className="text-black font-medium text-md cursor-pointer hover:text-primary transition-colors">{link}</li>
                         ))}
                     </ul>
                 </div>
 
                 {/* Address Info */}
                 <div className="flex flex-col gap-6">
-                    <h4 className="text-primary font-bold uppercase text-xs">Address</h4>
-                    <div className="flex flex-col gap-2 text-sm font-medium text-black">
+                    <h4 className="text-primary font-bold uppercase text-2xl">Address</h4>
+                    <div className="flex flex-col gap-2 text-md font-medium text-black">
                         <p>435, 15a Longdon Hill,<br />Colombo 00500</p>
                         <p>Ph: <span className="underline">+947 77 122 299</span></p>
                     </div>
@@ -80,9 +80,9 @@ export default function Footer() {
             </div>
 
             {/* 3. Copyright Bar */}
-            <div className="pt-8 border-t border-gray-100 flex justify-center">
+            <div className="pt-8 border-gray-100 flex justify-center">
                 <p className="text-white bg-primary w-full py-4 text-center rounded-sm font-medium text-xs uppercase">
-                    Copyright: © 2026 Prablo 360. All Rights Reserved. <span className="mx-2">|</span> <Link href="https://webasi.co" target="_blank" className="hover:text-black transition-colors">Design by WEBASI</Link>
+                    Copyright © 2026 Prablo 360. All Rights Reserved. <span className="mx-2">|</span> <Link href="https://webasi.co" target="_blank" className="hover:text-black transition-colors">Design by WEBASI</Link>
                 </p>
             </div>
         </footer>
