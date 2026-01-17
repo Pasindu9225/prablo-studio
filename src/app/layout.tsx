@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Sans, PT_Serif } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import LayoutContent from "@/components/LayoutContent"; // We will create this below
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
@@ -25,9 +24,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${outfit.variable} ${dmSans.variable} ${ptSerif.variable} font-dm-sans`}>
-                <Navbar />
-                {children}
-                <Footer />
+                {/* We move Navbar, Footer, and Logic into this new component */}
+                <LayoutContent>
+                    {children}
+                </LayoutContent>
             </body>
         </html>
     );
