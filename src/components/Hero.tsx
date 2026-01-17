@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring, animate } from "framer-motion";
 import Balatro from "./Balatro";
+import VideoLogo from "./VideoLogo";
 
 // Helper Counter Component
 function Counter({ value }: { value: number }) {
@@ -23,6 +24,8 @@ function Counter({ value }: { value: number }) {
 
     return <span ref={ref}>0</span>;
 }
+
+
 
 export default function Hero() {
     const stats = [
@@ -81,24 +84,20 @@ export default function Hero() {
             {/* Branding Section */}
             <div className="pb-24 px-[5%] flex flex-col lg:flex-row items-center justify-center bg-white gap-8 lg:gap-16">
                 <div className="flex-1 flex justify-center lg:justify-end">
-                    <Image
-                        src="/logo.png"
+                    <VideoLogo
+                        logoSrc="/logo.png"
+                        videoSrc="/logoVid1.mp4"
                         alt="PRABLO 360"
-                        width={400}
-                        height={100}
-                        className="object-contain"
                     />
                 </div>
 
                 <div className="vertical-line" />
 
                 <div className="flex-1 flex justify-center lg:justify-start">
-                    <Image
-                        src="/logoStudio.png"
+                    <VideoLogo
+                        logoSrc="/logoStudio.png"
+                        videoSrc="/logoVid2.mp4"
                         alt="PRABLO STUDIOS"
-                        width={400}
-                        height={100}
-                        className="object-contain"
                     />
                 </div>
             </div>
